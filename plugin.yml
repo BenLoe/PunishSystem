@@ -1,0 +1,18 @@
+name: PrisonPunish
+main: org.Prison.Punish.Main
+version: 1.0
+description: >
+             Punish System
+commands:
+  tempban:
+    description: Staff Command
+  mute:
+    description: Staff Command 
+  unmute:
+    description: Staff Command
+  ban:
+    description: Staff Command  
+  unban:
+    description: Staff Command
+  kick:
+    description: Staff Command                                       
