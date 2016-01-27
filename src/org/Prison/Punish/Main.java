@@ -23,17 +23,25 @@ public class Main extends JavaPlugin {
 			
 			if (Label.equalsIgnoreCase("mute")){
 				if (p.hasPermission("Punish.Mute")){
-					if (args.length < 2 || args.length > 4){
-						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/mute (player) (minutes)");
+					if (args.length < 3){
+						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/mute (player) (minutes) (reason)");
 					}else{
 						int minutes = 0;
 						try{
 							minutes = Integer.parseInt(args[1]);
 						}catch (Exception e){
-							p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/mute (player) (minutes)");
+							p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/mute (player) (minutes) (reason)");
 							return true;
 						}
-						PunishAPI.attemptMute(args[0], p, minutes);
+						String reason = "";
+						for (int i = 2; i < args.length; i++){
+							if (i == args.length - 1){
+								reason += args[i];	
+							}else{
+							reason += (args[i] + " ");
+							}
+						}
+						PunishAPI.attemptMute(args[0], p, minutes, reason);
 					}
 				}else{
 					p.sendMessage(ChatColor.RED + "No permission.");

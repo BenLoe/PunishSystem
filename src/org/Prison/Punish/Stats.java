@@ -1,6 +1,5 @@
 package org.Prison.Punish;
 
-
 public class Stats {
 
 	public static void addMute(String p){
@@ -26,13 +25,13 @@ public class Stats {
 		}
 	}
 	public static void addTemp(String p){
-		if (Files.getDataFile().contains("Players." + p  + ".Temp")){
-			int old = Files.getDataFile().getInt("Players." + p  + ".Temp");
+		if (Files.getDataFile().contains("Players." + p  + ".Tempstat")){
+			int old = Files.getDataFile().getInt("Players." + p  + ".Tempstat");
 			int newi = old + 1;
-			Files.getDataFile().set("Players." + p + ".Temp", newi);
+			Files.getDataFile().set("Players." + p + ".Tempstat", newi);
 			Files.saveDataFile();
 		}else{
-			Files.getDataFile().set("Players." + p  + ".Temp", 1);
+			Files.getDataFile().set("Players." + p  + ".Tempstat", 1);
 			Files.saveDataFile();
 		}
 	}
@@ -62,8 +61,8 @@ public class Stats {
 		return 0;
 	}
 	public static int getTemps(String p){
-		if (Files.getDataFile().contains("Players." + p + ".Temp")){
-			return Files.getDataFile().getInt("Players." + p + ".Temp");
+		if (Files.getDataFile().contains("Players." + p + ".Tempstat")){
+			return Files.getDataFile().getInt("Players." + p + ".Tempstat");
 		}
 		return 0;
 	}
