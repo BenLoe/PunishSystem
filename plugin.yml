@@ -15,4 +15,14 @@ commands:
   unban:
     description: Staff Command
   kick:
-    description: Staff Command                                       
+    description: Staff Command
+  chatp:
+    description: Staff Command 
+  genp:
+    description: Staff Command
+  hackp:
+    description: Staff Command
+  historyp:
+    description: Staff Command
+  punish:
+    description: Staff Command                                             

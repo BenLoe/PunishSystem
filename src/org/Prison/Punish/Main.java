@@ -21,6 +21,68 @@ public class Main extends JavaPlugin {
 		if (sender instanceof Player){
 			Player p = (Player) sender;
 			
+			if(Label.equalsIgnoreCase("punish")){
+				if (p.hasPermission("Punish.Punish")){
+					if (args.length < 2){
+						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/punish (player) (reason)");
+					}else{
+						String uuid = "";
+						String name = args[0];
+						if (Bukkit.getPlayer(name) != null){
+							uuid = Bukkit.getPlayer(name).getUniqueId().toString();
+						}else{
+							if (PunishAPI.hasJoined(name)){
+								try{
+									uuid = UUIDFetcher.getUUIDOf(name).toString();
+								}catch(Exception e){
+									p.sendMessage(ChatColor.RED + "The username you entered is not a minecraft account.");
+									return false;
+								}
+								String reason = "";
+								for (int i = 1; i < args.length; i++){
+									if (i == args.length - 1){
+										reason += args[i];	
+									}else{
+									reason += (args[i] + " ");
+									}
+								}
+								Menu.openInventory1(uuid, name, p, reason);
+							}else{
+								p.sendMessage(ChatColor.RED + "Player has never joined.");
+							}
+						}
+					}
+				}else{
+					p.sendMessage(ChatColor.RED + "No permission.");
+				}
+			}			
+			if(Label.equalsIgnoreCase("historyp")){
+				if (p.hasPermission("Punish.history")){
+					if (args.length < 1 || args.length > 1){
+						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/historyp (player)");
+					}else{
+						String uuid = "";
+						String name = args[0];
+						if (Bukkit.getPlayer(name) != null){
+							uuid = Bukkit.getPlayer(name).getUniqueId().toString();
+						}else{
+							if (PunishAPI.hasJoined(name)){
+								try{
+									uuid = UUIDFetcher.getUUIDOf(name).toString();
+								}catch(Exception e){
+									p.sendMessage(ChatColor.RED + "The username you entered is not a minecraft account.");
+									return false;
+								}
+								Menu.openInventory(uuid, name, p);
+							}else{
+								p.sendMessage(ChatColor.RED + "Player has never joined.");
+							}
+						}
+					}
+				}else{
+					p.sendMessage(ChatColor.RED + "No permission.");
+				}
+			}
 			if (Label.equalsIgnoreCase("mute")){
 				if (p.hasPermission("Punish.Mute")){
 					if (args.length < 3){
@@ -42,6 +104,87 @@ public class Main extends JavaPlugin {
 							}
 						}
 						PunishAPI.attemptMute(args[0], p, minutes, reason);
+					}
+				}else{
+					p.sendMessage(ChatColor.RED + "No permission.");
+				}
+			}
+			
+			if (Label.equalsIgnoreCase("chatp")){
+				if (p.hasPermission("Punish.chat")){
+					if (args.length < 3){
+						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/chatp (player) (level) (reason)");
+					}else{
+						int level = 0;
+						try{
+							level = Integer.parseInt(args[1]);
+						}catch (Exception e){
+							p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/chatp (player) (level) (reason)");
+							return true;
+						}
+						String reason = "";
+						for (int i = 2; i < args.length; i++){
+							if (i == args.length - 1){
+								reason += args[i];	
+							}else{
+							reason += (args[i] + " ");
+							}
+						}
+						PunishAPI.attemptMuteLevel(args[0], p, level, reason);
+					}
+				}else{
+					p.sendMessage(ChatColor.RED + "No permission.");
+				}
+			}
+			
+			if (Label.equalsIgnoreCase("genp")){
+				if (p.hasPermission("Punish.gen")){
+					if (args.length < 3){
+						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/genp (player) (level) (reason)");
+					}else{
+						int level = 0;
+						try{
+							level = Integer.parseInt(args[1]);
+						}catch (Exception e){
+							p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/genp (player) (level) (reason)");
+							return true;
+						}
+						String reason = "";
+						for (int i = 2; i < args.length; i++){
+							if (i == args.length - 1){
+								reason += args[i];	
+							}else{
+							reason += (args[i] + " ");
+							}
+						}
+						PunishAPI.attemptGenBan(args[0], p, level, reason);
+					}
+				}else{
+					p.sendMessage(ChatColor.RED + "No permission.");
+				}
+			}
+			
+			if (Label.equalsIgnoreCase("hackp")){
+				if (p.hasPermission("Punish.hack")){
+					if (args.length < 3){
+						p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/hackp (player) (level) (reason)");
+					}else{
+						int level = 0;
+						try{
+							level = Integer.parseInt(args[1]);
+						}catch (Exception e){
+							p.sendMessage(ChatColor.RED + "Invalid Arguments: " + ChatColor.AQUA + "/hackp (player) (level) (reason)");
+							return true;
+						}
+						String reason = "";
+						for (int i = 2; i < args.length; i++){
+							if (i == args.length - 1){
+								reason += args[i];	
+							}else{
+							reason += (args[i] + " ");
+							}
+						}
+						PunishAPI.attemptHackBan(args[0], p, level, reason);
 					}
 				}else{
 					p.sendMessage(ChatColor.RED + "No permission.");

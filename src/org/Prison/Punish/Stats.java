@@ -2,6 +2,7 @@ package org.Prison.Punish;
 
 public class Stats {
 
+/*
 	public static void addMute(String p){
 		if (Files.getDataFile().contains("Players." + p + ".Mute")){
 			int old = Files.getDataFile().getInt("Players." + p  + ".Mute");
@@ -72,4 +73,5 @@ public class Stats {
 		}
 		return 0;
 	}
+	*/
 }

@@ -14,7 +14,7 @@ public class SQLAccess {
 
 	public static Connection connection;
 	
-	public void onDisable(){
+/*	public void onDisable(){
 		try {
 			if (connection != null && !connection.isClosed()){
 				connection.close();
@@ -25,7 +25,7 @@ public class SQLAccess {
 	
 	public synchronized static void openConnection(){
 		try{
-			connection = DriverManager.getConnection("jdbc:mysql://****/****", "***", "****");
+			connection = DriverManager.getConnection("jdbc:mysql://********", "***", "****");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -62,5 +62,5 @@ public class SQLAccess {
 			e.printStackTrace();
 		}
 		}
-	
+*/
 }
